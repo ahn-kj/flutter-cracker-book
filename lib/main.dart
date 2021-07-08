@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'ui/round_image_button.dart';
 
 void main() {
   runApp(MyApp());
@@ -9,21 +10,71 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
-    );
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          // This is the theme of your application.
+          //
+          // Try running your application with "flutter run". You'll see the
+          // application has a blue toolbar. Then, without quitting the app, try
+          // changing the primarySwatch below to Colors.green and then invoke
+          // "hot reload" (press "r" in the console where you ran "flutter run",
+          // or simply save your changes to "hot reload" in a Flutter IDE).
+          // Notice that the counter didn't reset back to zero; the application
+          // is not restarted.
+          primarySwatch: Colors.blue,
+        ),
+        home: Scaffold(
+            appBar: AppBar(
+              // Here we take the value from the MyHomePage object that was created by
+              // the App.build method, and use it to set our appbar title.
+              title: Text("123"),
+            ),
+            body: Center(
+                child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(children: [
+                      Column(children: [
+                        RoundImageButton(200, 200, "assets/images/chats.svg"),
+                        Text("123",
+                            style: new TextStyle(
+                              fontSize: 20.0,
+                              color: Colors.black,
+                            ))
+                      ]),
+                      Column(children: [
+                        RoundImageButton(
+                            200, 200, "assets/images/microphone.svg"),
+                        Text("123",
+                            style: new TextStyle(
+                              fontSize: 20.0,
+                              color: Colors.black,
+                            ))
+                      ]),
+                      Column(children: [
+                        RoundImageButton(200, 200, "assets/images/note.svg"),
+                        Text("123",
+                            style: new TextStyle(
+                              fontSize: 20.0,
+                              color: Colors.black,
+                            ))
+                      ]),
+                      Column(children: [
+                        RoundImageButton(200, 200, "assets/images/desktop.svg"),
+                        Text("123",
+                            style: new TextStyle(
+                              fontSize: 20.0,
+                              color: Colors.black,
+                            ))
+                      ]),
+                      Column(children: [
+                        RoundImageButton(200, 200, "assets/images/etc.svg"),
+                        Text("123",
+                            style: new TextStyle(
+                              fontSize: 20.0,
+                              color: Colors.black,
+                            ))
+                      ])
+                    ])))));
   }
 }
 
