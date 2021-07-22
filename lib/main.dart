@@ -3,9 +3,18 @@ import 'ui/books_header.dart';
 import 'model/books_header_model.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(MyApp());
+}
+
+class BooksHeaderModelsNotifier extends ChangeNotifier {
+  List<BooksHeaderModel> booksHeaderModels = [];
+  void update(List<BooksHeaderModel> booksHeaderModels) {
+    this.booksHeaderModels.clear();
+    this.booksHeaderModels.addAll(booksHeaderModels);
+  }
 }
 
 class MyAppState extends State<MyApp> {
@@ -57,23 +66,28 @@ class MyAppState extends State<MyApp> {
           // is not restarted.
           primarySwatch: Colors.blue,
         ),
-        home: Scaffold(
-            appBar: AppBar(
-              // Here we take the value from the MyHomePage object that was created by
-              // the App.build method, and use it to set our appbar title.
-              title: Text("Cracker Book"),
-            ),
-            body: Center(
-                child: Column(
-              children: [
-                TextButton(
-                    onPressed: () {
-                      this.fetchAlbum();
-                    },
-                    child: Text("reload")),
-                BooksHeader(this.models)
-              ],
-            ))));
+        home: MultiProvider(
+            providers: [
+              ChangeNotifierProvider(
+                  create: (context) => BooksHeaderModelsNotifier()),
+            ],
+            child: Scaffold(
+                appBar: AppBar(
+                  // Here we take the value from the MyHomePage object that was created by
+                  // the App.build method, and use it to set our appbar title.
+                  title: Text("Cracker Book"),
+                ),
+                body: Center(
+                    child: Column(
+                  children: [
+                    TextButton(
+                        onPressed: () {
+                          this.fetchAlbum();
+                        },
+                        child: Text("reload")),
+                    BooksHeader(this.models)
+                  ],
+                )))));
   }
 }
 
