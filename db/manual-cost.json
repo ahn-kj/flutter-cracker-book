@@ -1,0 +1,87 @@
+{
+  "car": [
+    {
+      "id": 12,
+      "customerId": 2,
+      "customerName": "이효리",
+      "releaseOrEnter": 2,
+      "detailService": 1,
+      "allocationOfCarsDay": "2021-05-11",
+      "depart": "서울",
+      "destination": "부산",
+      "reason": "고객변심",
+      "dispatchRoute": "경로3",
+      "pallet": 30,
+      "vehicle": "차량222",
+      "distance": 400,
+      "fare": 40000,
+      "standByCost": 20000,
+      "price": 30000,
+      "category": "소나타",
+      "footTheBill": 1,
+      "remark": "비고없음"
+    }
+  ],
+  "return": [
+    {
+      "id": 155,
+      "customerId": 1,
+      "customerName": "이름1",
+      "returnResponsibility": "고객",
+      "paymentMehod": "신용",
+      "returnDate": "20210603",
+      "origianlInvoiceNo": "2021-0000-0000",
+      "returnInvoiceNo": "2021-0000-0000",
+      "address": "서울 강남구 논현로26길 18-4 1층",
+      "itemName": "킬바사",
+      "boxType": "극소",
+      "storageTemperature": "저온",
+      "returnQuantity": 1,
+      "returnDeliveryFee": 2500,
+      "returnWorkFee": 2500,
+      "creditReturnFee": 5000,
+      "returnReason": "단순변심",
+      "returnStatus": "완료",
+      "cashOnDeliveryCompany": "CJ대한통운",
+      "cashOnDeliveryFee": 2500,
+      "remark": "",
+      "images": []
+    }
+  ],
+  "toll-processing": [
+    {
+      "id": 155,
+      "customerId": 1,
+      "customerName": "이름1",
+      "processDate": "고객",
+      "workHistory": "신용",
+      "workType": "20210603",
+      "unitOfWork": "2021-0000-0000",
+      "contractPrice": "2021-0000-0000",
+      "quantity": "서울 강남구 논현로26길 18-4 1층",
+      "price": "킬바사",
+      "remark": "극소"
+    }
+  ],
+  "charge-deduction": [
+    {
+      "id": 155,
+      "customerId": 1,
+      "customerName": "이름1",
+      "date": "2021-01-23",
+      "chargeType": 1,
+      "orderNumber": "O-123312312312",
+      "orderer": "주단태",
+      "recipient": "심수련",
+      "productCode": "P-1231412213",
+      "releaseProductName": "아이맥 24인치",
+      "releaseCode": "IMAC23213",
+      "invoiceNumber": "S-12312321312",
+      "unitPrice": 10000,
+      "quantity": 123,
+      "price": 10000,
+      "attributable": "배송사가 잘못함",
+      "reason": "아이맥이 터짐"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "customer": [
+    {
+      "id": 12,
+      "customerName": "BTS",
+      "companyRegistrationNumber": "0980231312",
+      "categoryOfBusiness": "판매업",
+      "address": "서울시 은평구 통일로 22나길 33-3",
+      "personInCharge": "아미",
+      "bankName": "신한은행",
+      "bankAccount": "924502-01-222-233",
+      "accountHolder": "지수",
+      "settlementDay": "T-123412-1242141",
+      "taxBillAddress": "서울시 은평구",
+      "deposit": 30000000,
+      "quarter": 4,
+      "budgetRoom": "Y",
+      "memo": "메모1"
+    }
+  ]
+}
