@@ -6,20 +6,13 @@ import 'dart:convert';
 import 'package:provider/provider.dart';
 
 void main() {
-  runApp(MyApp());
-}
-
-class BooksHeaderModelsNotifier extends ChangeNotifier {
-  List<BooksHeaderModel> booksHeaderModels = [];
-  void update(List<BooksHeaderModel> booksHeaderModels) {
-    this.booksHeaderModels.clear();
-    this.booksHeaderModels.addAll(booksHeaderModels);
-  }
+  runApp(MultiProvider(providers: [
+    ChangeNotifierProvider(create: (context) => BooksHeaderModelsNotifier()),
+  ], child: MyApp()));
 }
 
 class MyAppState extends State<MyApp> {
-  List<BooksHeaderModel> models = [];
-  void fetchAlbum() async {
+  void fetchAlbum(BuildContext context) async {
     // final response = await http
     //     .get(Uri.parse('https://jsonplaceholder.typicode.com/albums/1'));
     final response = await http.get(Uri.parse(
@@ -29,11 +22,10 @@ class MyAppState extends State<MyApp> {
       print(response.body);
       final parsed = jsonDecode(response.body).cast<Map<String, dynamic>>();
       final models = parsed
-          .map<BooksHeaderModel>((json) => BooksHeaderModel.fromJson(json));
-      this.models.clear();
-      this.models.addAll(models);
+          .map<BooksHeaderModel>((json) => BooksHeaderModel.fromJson(json))
+          .toList();
+      context.read<BooksHeaderModelsNotifier>().update(models);
 
-      //     .toList();
       // If the server did return a 200 OK response,
       // then parse the JSON.
       // return BooksHeaderModel.fromJson(jsonDecode(response.body));
@@ -47,7 +39,6 @@ class MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    this.fetchAlbum();
   }
 
   @override
@@ -66,28 +57,25 @@ class MyAppState extends State<MyApp> {
           // is not restarted.
           primarySwatch: Colors.blue,
         ),
-        home: MultiProvider(
-            providers: [
-              ChangeNotifierProvider(
-                  create: (context) => BooksHeaderModelsNotifier()),
-            ],
-            child: Scaffold(
-                appBar: AppBar(
-                  // Here we take the value from the MyHomePage object that was created by
-                  // the App.build method, and use it to set our appbar title.
-                  title: Text("Cracker Book"),
-                ),
-                body: Center(
-                    child: Column(
-                  children: [
-                    TextButton(
-                        onPressed: () {
-                          this.fetchAlbum();
-                        },
-                        child: Text("reload")),
-                    BooksHeader(this.models)
-                  ],
-                )))));
+        home: Scaffold(
+            appBar: AppBar(
+              // Here we take the value from the MyHomePage object that was created by
+              // the App.build method, and use it to set our appbar title.
+              title: Text("Cracker Book"),
+            ),
+            body: Center(
+                child: Column(
+              children: [
+                TextButton(
+                    onPressed: () {
+                      this.fetchAlbum(context);
+                    },
+                    child: Text("reload")),
+                BooksHeader(context
+                    .watch<BooksHeaderModelsNotifier>()
+                    .booksHeaderModels)
+              ],
+            ))));
   }
 }
 

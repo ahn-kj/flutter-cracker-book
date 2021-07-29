@@ -1,5 +1,25 @@
 import 'package:flutter/material.dart';
 
+class BooksHeaderModelsNotifier extends ChangeNotifier {
+  List<BooksHeaderModel> _booksHeaderModels = [];
+  List<BooksHeaderModel> get booksHeaderModels => _booksHeaderModels;
+  void update(List<BooksHeaderModel> booksHeaderModels) {
+    this._booksHeaderModels.clear();
+    this._booksHeaderModels.addAll(booksHeaderModels);
+    notifyListeners();
+  }
+
+  void add(BooksHeaderModel model) {
+    this._booksHeaderModels.add(model);
+    notifyListeners();
+  }
+
+  void addFirst(BooksHeaderModel model) {
+    this._booksHeaderModels.insert(0, model);
+    notifyListeners();
+  }
+}
+
 class BooksHeaderModel {
   int id = 0;
   String title = "";

@@ -2,8 +2,8 @@
     "books-header": [
       {
         "id": 12,
-        "title": "토론",
-        "imagePath" : "assets/images/chats.svg"
+        "title": "토론12345",
+        "imagePath" : "assets/images/note.svg"
       },
       {
         "id": 12,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'round_image_button.dart';
 import '../model/books_header_model.dart';
+import 'package:provider/provider.dart';
 
 class BooksHeader extends StatefulWidget {
   List<BooksHeaderModel> booksHeaderModels = [];
@@ -50,8 +51,26 @@ class BooksHeaderState extends State<BooksHeader> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        child: Row(children: _buidColumnList()));
+    return Container(
+        decoration: BoxDecoration(
+          color: Colors.purple[100],
+          borderRadius: BorderRadius.all(Radius.circular(20)),
+        ),
+        child: Column(children: [
+          SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Column(children: [
+                Row(children: _buidColumnList()),
+              ])),
+          TextButton(
+              onPressed: () {
+                context.read<BooksHeaderModelsNotifier>().addFirst(
+                    BooksHeaderModel(
+                        id: 999,
+                        title: 'test${this.booksHeaderModels.length}',
+                        imagePath: 'assets/images/etc.svg'));
+              },
+              child: Text("add")),
+        ]));
   }
 }
